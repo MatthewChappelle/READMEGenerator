@@ -1,5 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+//import license functions from generateMarkdown.js
+const { generateReadme } = require('./utils/generateMarkdown');
 
 // User Input
 inquirer
@@ -65,43 +67,11 @@ inquirer
 
     //Fill in templage with user input
     .then((answers) => {
-        //generate readme
-        const newReadMe = `
-# ${answers.title}
-    
-    
-## Description
-${answers.description}
-    
-## Table of Contents
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
-- [Contributing](#contributing)
-- [Tests](#tests)
-- [Questions](#questions)
-    
-## Installation
-${answers.installation}
-    
-## Usage
-${answers.usage}
-
-## License
-This application is covered under the LICENSE HERE license. For more information, see LICENSELINK HERE.
-    
-## Contributing
-${answers.contribution}
-
-## Tests
-${answers.tests}
-
-## Questions
-Feel free to reach out to me with questions, comments, concerns, and sarcastic remarks through my GitHub: [${answers.github}](https://github.com/${answers.github}) Or my email: [${answers.email}]
-`;
+        const newReadme = generateReadme(answers);
+        readmeContent = newReadme
 
         // Writes ReadMe and console logs result
-        fs.writeFile('README.md', newReadMe, (err) => {
+        fs.writeFile('README.md', readmeContent, (err) => {
             if (err) {
                 console.error(err);
             } else {
