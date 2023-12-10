@@ -18,8 +18,6 @@ THEN I am taken to the corresponding section of the README</p>
 
 <p>This is an application that will help speed up your build process that will generate readme files that are pre-templated. All you have to do is enter the information! See the pictures and videos below!
 
-assets/ReadmeGeneratorVideo.webm
-
 <p>just run 'node index.js', follow the prompts, and you'll be on your way!
 
 ![!\[Start Command Prompt\](image.png)](assets/startCommand.png)
